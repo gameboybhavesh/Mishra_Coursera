@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (C) 2023 by Bhavesh Mishra
+ * Copyright (C) 2023 by Bhavesh Mishra.
  *
  * Redistribution, modification or use of this software in source 
  * or binary forms is permitted as long as the files maintain this 
@@ -20,12 +20,17 @@
  * @date 20/11/23
  *
  */
- 
 #ifndef __STATS_H__
 #define __STATS_H__
 
 /* Add Your Declarations and Function Comments here */ 
-
+unsigned char find_minimum(unsigned char test[], int size);
+unsigned char find_maximum(unsigned char test[], int size);
+unsigned char find_mean(unsigned char test[], int size);
+unsigned char find_median(unsigned char test[], int size);
+unsigned char sort_array(unsigned char test[], int size);
+void print_statistics(unsigned char test[], int size);
+void print_array(unsigned char test[], int size);
 /**
  * @brief <Add Brief Description of Function Here>
  *
@@ -38,6 +43,8 @@
  *
  * @return <Add Return Informaiton here>
  */
-
+ 
 
 #endif /* __STATS_H__ */
+
+
