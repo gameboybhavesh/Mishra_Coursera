@@ -42,43 +42,115 @@ int main()
 // Function to calculate the maximum value
 unsigned char find_maximum(unsigned char test[], int size)
 {
-    
+    unsigned char max = test[0];
+    for (int i = 1; i < size; i++)
+    {
+        if (test[i] > max)
+            max = test[i];
+    }
+    return max;
 }
 
 // Function to calculate the minimum value
 unsigned char find_minimum(unsigned char test[], int size)
 {
-    
+    unsigned char min = test[0];
+    for (int i = 1; i < size; i++)
+    {
+        if (test[i] < min)
+            min = test[i];
+    }
+    return min;
 }
 
 // Function to calculate the mean value
 unsigned char find_mean(unsigned char test[], int size)
 {
-   
-   
+    unsigned int sum = 0;
+    for (int i = 0; i < size; i++)
+    {
+        sum += test[i];
+    }
+    return (unsigned char)(sum / size); // Rounded down to the nearest integer
 }
 
 // Function to calculate the median value
 unsigned char find_median(unsigned char test[], int size)
 {
-    
-    
-}
-// Function to sort array
-unsigned char sort_array(unsigned char test[], int size)
-{
+    // Sort the test array in ascending order
+    for (int i = 0; i < size - 1; i++)
+    {
+        for (int j = 0; j < size - i - 1; j++)
+        {
+            if (test[j] > test[j + 1])
+            {
+                unsigned char temp = test[j];
+                test[j] = test[j + 1];
+                test[j + 1] = temp;
+            }
+        }
+    }
 
+    // Calculate the median
+    if (size % 2 == 0)
+    {
+        return (unsigned char)((test[size / 2 - 1] + test[size / 2]) / 2);
+    }
+    else
+    {
+        return test[size / 2];
+    }
 }
 
+// Sort the test array in descending order
+   unsigned char sort_array(unsigned char test[], int size) 
+   {
+    for (int i = 0; i < size - 1; i++)
+    {
+        for (int j = 0; j < size - i - 1; j++)
+        {
+            if (test[j] < test[j + 1])
+            {
+                unsigned char temp = test[j];
+                test[j] = test[j + 1];
+                test[j + 1] = temp;
+            }
+        }
+    }
+    
+    print_array(test,size);
+   
+}
 // Function to print the statistics and sorted test
 void print_statistics(unsigned char test[], int size)
 {
+    unsigned char max = find_maximum(test, size);
+    unsigned char min = find_minimum(test, size);
+    unsigned char avg = find_mean(test, size);
+    unsigned char med = find_median(test, size);
+
+    printf("Data Statistics:\n");
+    printf("---------------\n");
+    printf("Maximum: %hhu\n", max);
+    printf("Minimum: %hhu\n", min);
+    printf("Mean: %hhu\n", avg);
+    printf("Median: %hhu\n", med);
+    printf("Array Size: %hhu\n", size);
+    sort_array(test,size);
    
+    
 }
+
 
 // Function to print array screen
 void print_array(unsigned char test[], int size)
-{
-   
+{     printf("\n Sorted Data:\n");
+      printf("---------------\n");
+  // Loop through and print the array
+  for(int i=0; i<size; i++){
+      printf(" array[%u]: %u\n",i, test[i]);
+  }
+      printf("\n");
+  return;
 }
 
