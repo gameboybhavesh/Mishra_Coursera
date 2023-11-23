@@ -20,3 +20,9 @@
  * @date 20/11/23
  *
  */
+ 
+ # This is the c programm for the assessment week 1
+
+ # The folder is organized in the follwoing files:
+ # stats.h -> Header file for the c program
+ # stats.c -> Implementation file of the c program
