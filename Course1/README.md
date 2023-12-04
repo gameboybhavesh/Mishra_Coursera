@@ -1,4 +1,4 @@
-# embed-final
+# Course1-final-Assessment
 Final project of Coursera's Introduction to Embedded Systems Software and Development Environments
 ### Features
 This project implements
