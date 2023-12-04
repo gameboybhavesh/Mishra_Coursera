@@ -2,10 +2,10 @@
  * Copyright (C) 2017 by Alex Fosdick - University of Colorado
  *
  * Redistribution, modification or use of this software in source or binary
- * forms is permitted as long as the files maintain this copyright. Users are 
+ * forms is permitted as long as the files maintain this copyright. Users are
  * permitted to modify this and use it to learn about the field of embedded
  * software. Alex Fosdick and the University of Colorado are not liable for any
- * misuse of this material. 
+ * misuse of this material.
  *
  *****************************************************************************/
 /**
@@ -16,24 +16,30 @@
  * are not to change any of the code, they are instead supposed to compile
  * these files with their makefile.
  *
- * @author Alex Fosdick
- * @date April 1 2017
+ * @author Kesava Mani
+ * @date Auguest 2020
  *
  */
-#include "../include/common/platform.h"
-#include "../include/common/memory.h"
+
+#include "course1.h"
+#include "platform.h"
+#include "memory.h"
+#include "data.h"
 
 #define MAX_LENGTH (10)
 char buffer[MAX_LENGTH];
 
 /* A pretty boring main file */
 int main(void) {
+#if defined COURSE1
+  course1();
+#else
   unsigned int i;
   char value;
 
   /* Code below does some arbitrary memory Reads & writes */
   clear_all(buffer, MAX_LENGTH);
-  set_all( ( buffer + 8 ), 43, 2); 
+  set_all( ( buffer + 8 ), 43, 2);
   set_value(buffer, 0, 0x61);
   value = get_value(buffer, 9);
   set_value(buffer, 9, (value + 0x27));
@@ -49,6 +55,7 @@ int main(void) {
     PRINTF("%c", buffer[i]);
   }
   PRINTF("\n");
+#endif // COURSE1
+
   return 0;
 }
-

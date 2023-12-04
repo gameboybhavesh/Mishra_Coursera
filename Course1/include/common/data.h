@@ -1,42 +1,66 @@
-//******************************************************************************
+/******************************************************************************
  * Copyright (C) 2017 by Alex Fosdick - University of Colorado
  *
  * Redistribution, modification or use of this software in source or binary
- * forms is permitted as long as the files maintain this copyright. Users are 
+ * forms is permitted as long as the files maintain this copyright. Users are
  * permitted to modify this and use it to learn about the field of embedded
  * software. Alex Fosdick and the University of Colorado are not liable for any
- * misuse of this material. 
+ * misuse of this material.
  *
  *****************************************************************************/
 /**
- * @file main.c
- * @brief Main entry point to the C1M2 Assessment
+ * @file memory.h
+ * @brief Abstraction of memory read and write operations
  *
- * This file contains the main code for the C1M2 assesment. Students
- * are not to change any of the code, they are instead supposed to compile
- * these files with their makefile.
+ * This header file provides an abstraction of reading and
+ * writing to memory via function calls.
  *
- * @author Alex Fosdick
- * @date April 1 2017
+ * @author Kesava Mani
+ * @date August 2020
  *
  */
-#ifndef __STATS_H__
-#define __STATS_H__
 
-/* Add Your Declarations and Function Comments here */ 
 
-/** '#######################################################
- * @brief 
+
+#ifndef __DATA_H__
+#define __DATA_H__
+
+#include <stdint.h>
+#include <stddef.h>
+
+
+/****************************************************************************/
+/*                Implemented data conversion functions                     */
+/****************************************************************************/
+/**
+ * @brief Sets a value of a data array
  *
- * 
- * 
+ * Handles the conversion of input integer to equivalent string representation
+ * for the specified radix. Signedness of decimal number only is handled.
  *
- * @param 
+ * @param data Input number to be converted
+ * @param ptr Buffer to store the converted string
+ * @param base Radix of the input number
  *
- *@return 
- ###########################################################*/ 
-
- 
-#endif /* __STATS_H__ */
+ * @return Length of converted string
+ */
+uint8_t my_itoa(int32_t data, uint8_t * ptr, uint32_t base);
 
 
+/**
+ * @brief Converts the input integer string to integer
+ *
+ * Handles the integer string of given digits to integer type conversion with
+ * radix of input number ranging from 2 to 16. Checks if individual number is
+ * within the range of given radix is done.
+ *
+ * @param ptr Buffer to the input integer string
+ * @param digits No. of digits in input number
+ * @param base Radix of the input number
+ *
+ * @return Converted integer
+ */
+int32_t my_atoi(uint8_t * ptr, uint8_t digits, uint32_t base);
+
+
+#endif /* __DATA_H__ */

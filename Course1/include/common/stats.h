@@ -20,100 +20,125 @@
  * @date 20/11/23
  *
  */
+
 #ifndef __STATS_H__
 #define __STATS_H__
 
-/* Add Your Declarations and Function Comments here */ 
-
-/** '#######################################################
- * @brief Find minimum value
+#include "platform.h"
+#include <stddef.h>
+/**
+ * @brief Prints the statistics of input data.
  *
- * A function which finds the minimum value of a given array.
- * 
+ * Computes all statistics including mean, median, maximum and minimum
+ * calculations.
  *
- * @param unsigned char,int
+ * @param input - The data to be printed.
+ * @param size - The size of the data to be printed.
  *
- *@return minimum value
- ###########################################################*/ 
-unsigned char find_minimum(unsigned char test[], int size);
-
- /** '########################################################
- * @brief Find maximum value
- *
- * A function which finds the maximum value of a given array.
- * 
- *
- * @param unsigned char,int
- *
- *@return maximum value
- ###########################################################*/ 
-unsigned char find_maximum(unsigned char test[], int size);
-
-/** '########################################################
- * @brief Find mean value
- *
- * A function which finds the average (mean) value of a given array.
- * 
- *
- * @param unsigned char,int
- *
- *@return mean value
- ###########################################################*/ 
-unsigned char find_mean(unsigned char test[], int size);
-
-/** '#########################################################
- * @brief Find median value
- *
- * A function which finds the median value of the given array.
- * 
- *
- * @param unsigned char,int
- *
- *@return median value
- ###########################################################*/ 
-
-unsigned char find_median(unsigned char test[], int size);
+ * @return One of the values of en_status_t.
+ */
+en_status_t print_statistics(unsigned char* input, unsigned char size);
 
 
- /** '########################################################
- * @brief Reorganize given values
+/**
+ * @brief Prints the input array.
  *
- * A function which sorts / reorganizes given numbers from largest to smallest
- * 
+ * This function prints the input data to standard output. Needs stdio.h to be
+ * included.
  *
- * @param unsigned char,int
+ * @param input - The data to be printed.
+ * @param size - The size of the data to be printed.
  *
- * @return sorted_array
- ###########################################################*/ 
-unsigned char sort_array(unsigned char test[], int size);
-/**#########################################################
- * @brief Prints statistic values
- *
- * A function that prints the statistics of an array including minimum, 
- * maximum, mean and median in a formatted way.
- *
- * @param unsigned char min <minimum value>
- * @param unsigned char max <maximum value>
- * @param unsigned char mean  <average value>
- * @param unsigned char median <median value>
- *
- * @return void <no return value>
- ##########################################################*/
-void print_statistics(unsigned char test[], int size);
+ * @return One of the values of en_status_t.
+ */
+en_status_t print_array(unsigned char* input, unsigned char size);
 
- /** '########################################################
- * @brief Print an array 
+
+/**
+ * @brief Calculates the median
  *
- * A function which prints a given array in a readable formatted way
- * 
+ * Performs median calculation of input array data. Data is sorted inside the
+ * function.
  *
- * @param unsigned char,int 
- * 
- *@return void <no return value>
- ###########################################################*/ 
-void print_array(unsigned char test[], int size);
+ * @param *input - The data to be calculated
+ * @param size - The size of the data.
+ *
+ * @return Calculated median in float type
+ */
+float find_median(unsigned char* input, unsigned char size);
+
+
+/**
+ * @brief Calculates the mean.
+ *
+ * This function calculates average on input data like how normal person
+ * would do.
+ *
+ * @param *input - The data to be calculated
+ * @param size - The size of the data.
+ *
+ * @return Mean value in float type.
+ */
+float find_mean(unsigned char* input, unsigned char size);
+
+
+/**
+ * @brief Calculates maximum of the input.
+ *
+ * The input is sorted implicit and maximum value is returned.
+ *
+ * @param *input - The data to be calculated
+ * @param size - The size of the data.
+ *
+ * @return Maximum value.
+ */
+unsigned char find_maximum(unsigned char* input, unsigned char size);
+
+
+/**
+ * @brief Calculates minimum of the input.
+ *
+ * The input is sorted implicit and minimum value is returned.
+ *
+ * @param *input - The data to be calculated
+ * @param size - The size of the data.
+ *
+ * @return Minumum value.
+ */
+unsigned char find_minimum(unsigned char* input, unsigned char size);
+
+
+/**
+ * @brief Sorts the input array.
+ *
+ * This function sorts the input array using bubble sort algorithm.
+ * Optimizations done include checking array if it is already sorted and
+ * inner loop iteration reduction.
+ *
+ * @param *input - The data to be calculated
+ * @param size - The size of the data.
+ *
+ * @return One of the values of en_status_t.
+ */
+en_status_t sort_array(unsigned char* input, unsigned char size);
+
+
+/**
+ * @brief Performs swapping
+ *
+ * This function does the swapping of two numbers. Pointers to the data must
+ *  be passed as input.
+ *
+ * @param *a - Fist data
+ * @param *b - Second data
+ *
+ * @return One of the values of en_status_t.
+ */
+en_status_t swap(unsigned char* a, unsigned char* b);
+
+
+
+
 
 
 #endif /* __STATS_H__ */
-
-
